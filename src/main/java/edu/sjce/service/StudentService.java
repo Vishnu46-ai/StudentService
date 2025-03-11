@@ -68,15 +68,20 @@ public class StudentService {
 		return studentUpdateStatus;
 	}
 
-	public boolean removeStudent(String studentId) {
-		boolean studentDeletionStatus = false;
+	public StudentDetails removeStudent(String studentId) {
+		StudentDetails studentDetails = new StudentDetails();
 		try {
-			studentRepository.deleteByStudentId(studentId);
-			studentDeletionStatus = true;
+			Student student = studentRepository.deleteByStudentId(studentId);
+			studentDetails.setStudentId(student.getStudentId());
+			studentDetails.setName(student.getStudentName());
+			studentDetails.setYear(student.getYear());
+			studentDetails.setBranch(student.getDepartment());
+			studentDetails.setDegree(student.getDegree());
+			studentDetails.setBatch(student.getBatch());
 		} catch ( Exception exception ) {
 			System.out.println("Exception during deletion of student... : " + exception);
 		}
-		return studentDeletionStatus;
+		return studentDetails;
 	}
 
 }

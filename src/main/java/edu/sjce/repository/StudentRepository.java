@@ -6,5 +6,5 @@ import edu.sjce.dao.Student;
 public interface StudentRepository extends MongoRepository<Student, String> {
 
 	Student findByStudentId(String studentId);
-	long deleteByStudentId(String studentId);
+	Student deleteByStudentId(String studentId);
 }

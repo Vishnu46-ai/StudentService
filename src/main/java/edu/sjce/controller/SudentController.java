@@ -41,9 +41,9 @@ public class SudentController {
 	}
 	
 	@DeleteMapping("/student/{studentId}/deleteprofile")
-	public boolean deletestudentDetails(@PathVariable String studentId) {
-		boolean deleteStatus = studentService.removeStudent(studentId);
-		return deleteStatus;
+	public StudentDetails deletestudentDetails(@PathVariable String studentId) {
+		StudentDetails studentDetails = studentService.removeStudent(studentId);
+		return studentDetails;
 	}
 
 }
