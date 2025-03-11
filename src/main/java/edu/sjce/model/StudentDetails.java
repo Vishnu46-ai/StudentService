@@ -6,7 +6,8 @@ public class StudentDetails {
 	private String name;
 	private String degree;
 	private String branch;
-	private int year;
+	private String year;
+	private String batch;
 	public String getStudentId() {
 		return studentId;
 	}
@@ -31,10 +32,16 @@ public class StudentDetails {
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
+	}
+	public String getBatch() {
+		return batch;
+	}
+	public void setBatch(String batch) {
+		this.batch = batch;
 	}
 }

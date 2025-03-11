@@ -24,43 +24,26 @@ public class SudentController {
 	
 	@GetMapping("/student/{studentId}/getprofile")
 	public  StudentDetails getStudentDetails(@PathVariable String studentId){
-		StudentDetails studentDetails = new StudentDetails();
-		studentDetails.setBranch("CSC");
-		studentDetails.setDegree("BE");
-		studentDetails.setName("Vishnu");
-		studentDetails.setStudentId(studentId);
-		studentDetails.setYear(2023);
+		StudentDetails studentDetails = studentService.getStudent(studentId);
 		return studentDetails;
 	}
 	
 	@PutMapping("/student/createprofile")
 	public boolean createStudentDetails(@RequestBody StudentDetails studentDetails) {
-		System.out.println("Student Id : " + studentDetails.getStudentId());
-		System.out.println("Student name : " + studentDetails.getName());
-		System.out.println("Student year : " + studentDetails.getYear());
-		System.out.println("student branch : " + studentDetails.getBranch());
-		System.out.println("Student Degree : " + studentDetails.getDegree());
-		return true;
+		boolean createStatus = studentService.createStudent(studentDetails);
+		return createStatus;
 	}
 	
 	@PostMapping("/student/{studentId}/updateprofile")
 	public boolean updateStudentDetails(@PathVariable String studentId, @RequestBody StudentDetails studentDetails) {
-		
-		System.out.println("Student Id : " + studentId);
-		System.out.println("Student name : " + studentDetails.getName());
-		System.out.println("Student year : " + studentDetails.getYear());
-		System.out.println("student branch : " + studentDetails.getBranch());
-		System.out.println("Student Degree : " + studentDetails.getDegree());
-		return true;
+		boolean updateStatus = studentService.updateStudent(studentId, studentDetails);
+		return updateStatus;
 	}
 	
 	@DeleteMapping("/student/{studentId}/deleteprofile")
 	public boolean deletestudentDetails(@PathVariable String studentId) {
-		System.out.println("The Given StudentID was Deleted" + studentId);
-		return true;
+		boolean deleteStatus = studentService.removeStudent(studentId);
+		return deleteStatus;
 	}
-	
-	
-	
 
 }
